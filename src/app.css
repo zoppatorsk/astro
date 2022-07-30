@@ -1,0 +1,206 @@
+:root {
+	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+	font-size: 10px;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html,
+body {
+	width: 100%;
+}
+body {
+	position: relative;
+	background: rgb(25, 39, 40);
+	background: linear-gradient(0deg, rgba(25, 39, 40, 1) 51%, rgba(2, 12, 16, 1) 100%);
+	font-size: 2rem;
+	color: white;
+}
+main {
+	width: 100%;
+}
+h1 {
+	font-size: 4rem;
+	padding: 5px;
+}
+a,
+a:visited {
+	color: white;
+	text-decoration: none;
+}
+.container {
+	position: relative;
+	margin: 0 auto;
+	min-height: 100vh;
+	max-width: 1980px;
+	background-position: center;
+	background-size: cover;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+}
+.container:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(7, 7, 7, 0.753);
+	/* background-color: rgba(0, 0, 0, 0.315); */
+}
+.content {
+	margin-top: 30px;
+	padding: 20px;
+	z-index: 1;
+	width: 100%;
+	max-width: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: white;
+
+	text-align: center;
+}
+.content h2 {
+	text-transform: capitalize;
+	font-size: 4rem;
+}
+.content p {
+	font-size: 2rem;
+	margin-bottom: 20px;
+}
+
+.hearts {
+	display: flex;
+	align-items: center;
+	color: red;
+	font-size: 2.5rem;
+	margin-bottom: 20px;
+}
+.hearts img {
+	margin-left: 14px;
+	margin-right: 14px;
+}
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgb(22, 22, 22);
+	/* backdrop-filter: blur(10px); */
+
+	z-index: 4;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+#close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	padding: 5px;
+}
+.signsContainer {
+	max-width: 700px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	font-size: 1.5rem;
+	text-transform: capitalize;
+}
+.signsContainer > .sign {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+	width: 110px;
+	cursor: pointer;
+}
+.sign > p {
+	margin: 2px;
+	padding-top: 2px;
+}
+.hidden {
+	display: none;
+}
+#select {
+	/* position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 50px; */
+	padding: 10px;
+	margin-top: 8vh;
+	border: 1px solid white;
+	cursor: pointer;
+}
+
+.outline {
+	outline: 1px solid white;
+}
+.overlay h2 {
+	font-size: 2.5rem;
+	margin-bottom: 20px;
+}
+.day {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 20px;
+}
+.day > .date {
+	font-size: 1.8rem;
+	font-weight: 300;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+svg {
+	display: block;
+	pointer-events: none;
+}
+.pointer {
+	cursor: pointer;
+}
+.traits {
+	width: 100%;
+	max-width: 400px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+strong {
+	font-size: 1.6rem;
+}
+#attribution {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	cursor: pointer;
+}
+
+#attribution-box {
+	position: absolute;
+	font-size: 1.5rem;
+	background-color: rgba(0, 0, 0, 0.788);
+	z-index: 2;
+	bottom: 10px;
+	left: 40px;
+	padding: 10px;
+	color: rgb(165, 168, 172);
+}
