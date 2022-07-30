@@ -23,11 +23,14 @@
 	let horoscope = {};
 	let selectedSign;
 	let imageUrls = {};
+	imageUrls.landscape = './images/undefined.png';
+	imageUrls.portrait = './images/undefined.png';
+	let imageUrl = './images/undefined.png';
+
 	let showOverlay = false;
 	let day = 'today';
 	let hideAttribution = true;
 	let innerWidth = window.innerWidth;
-	let imageUrl = '';
 
 	$: imageUrl = innerWidth >= 800 && imageUrls.landscape ? imageUrls.landscape : imageUrls.portrait;
 
