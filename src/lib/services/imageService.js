@@ -1,5 +1,6 @@
-const apiKey = '563492ad6f917000010000018bded9416a224d2a8f628cdac67a7008';
+import key from '../api.js';
 const baseUrl = 'https://api.pexels.com/v1';
+const apiKey = key();
 
 async function getImage(mood) {
 	//some moods wont return images, here do a rebind of it.
