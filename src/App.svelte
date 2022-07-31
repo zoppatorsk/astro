@@ -23,9 +23,9 @@
 	let horoscope = {};
 	let selectedSign;
 	let imageUrls = {};
-	imageUrls.landscape = './images/undefined.png';
-	imageUrls.portrait = './images/undefined.png';
-	let imageUrl = './images/undefined.png';
+	// imageUrls.landscape = './images/undefined.png';
+	// imageUrls.portrait = './images/undefined.png';
+	let imageUrl = '';
 
 	let showOverlay = false;
 	let day = 'today';
@@ -66,7 +66,6 @@
 <svelte:window bind:innerWidth />
 <main>
 	<div class="overlay {showOverlay ? '' : 'hidden'}">
-		<div id="close" on:click={() => (showOverlay = false)}>X</div>
 		<h2>Select Sign</h2>
 		<div class="signsContainer">
 			{#each signs as sign}
@@ -86,9 +85,8 @@
 			{/each}
 		</div>
 	</div>
-
-	<div class="container" style="background-image: url('{imageUrl}');">
-		{#if selectedSign}
+	{#if selectedSign && imageUrl}
+		<div class="container" style="background-image: url('{imageUrl}');">
 			<div class="content">
 				<img src="./images/{selectedSign}.png" alt={selectedSign} height="100px" width="100px" />
 				<h1>{selectedSign}</h1>
@@ -134,8 +132,8 @@
 				<p>Background images from <a href="https://www.pexels.com/" target="_blank">Pexels</a></p>
 				<a href="https://www.flaticon.com/packs/zodiac-9" title="zodiac icons" target="_blank">Zodiac icons created by Freepik - </a>
 			</div>
-		{/if}
-	</div>
+		</div>
+	{/if}
 </main>
 
 <style>
