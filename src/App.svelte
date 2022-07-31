@@ -3,6 +3,7 @@
 	import ChevronRightCircleOutline from 'svelte-material-icons/ChevronRightCircleOutline.svelte';
 	import ChevronLeftCircleOutline from 'svelte-material-icons/ChevronLeftCircleOutline.svelte';
 	import InformationOutline from 'svelte-material-icons/InformationOutline.svelte';
+	import { fade } from 'svelte/transition';
 
 	import getHoroscope from './lib/services/horoscopeService';
 	import getImage from './lib/services/imageService';
@@ -23,8 +24,6 @@
 	let horoscope = {};
 	let selectedSign;
 	let imageUrls = {};
-	// imageUrls.landscape = './images/undefined.png';
-	// imageUrls.portrait = './images/undefined.png';
 	let imageUrl = '';
 
 	let showOverlay = false;
@@ -65,27 +64,30 @@
 
 <svelte:window bind:innerWidth />
 <main>
-	<div class="overlay {showOverlay ? '' : 'hidden'}">
-		<h2>Select Sign</h2>
-		<div class="signsContainer">
-			{#each signs as sign}
-				<div
-					class="sign {selectedSign === sign.name ? 'outline' : ''}"
-					on:click={() => {
-						selectedSign = sign.name;
-						showOverlay = false;
-					}}
-				>
-					<img src="./images/{sign.name}.png" alt={sign.name} width="40px" height="40px" />
-					<p>{sign.name}</p>
-					<p>
-						<small>{sign.dates}</small>
-					</p>
-				</div>
-			{/each}
+	{#if showOverlay}
+		<div class="overlay">
+			<h2>Select Sign</h2>
+			<div class="signsContainer">
+				{#each signs as sign}
+					<div
+						class="sign {selectedSign === sign.name ? 'outline' : ''}"
+						on:click={() => {
+							selectedSign = sign.name;
+							showOverlay = false;
+						}}
+					>
+						<img src="./images/{sign.name}.png" alt={sign.name} width="40px" height="40px" />
+						<p>{sign.name}</p>
+						<p>
+							<small>{sign.dates}</small>
+						</p>
+					</div>
+				{/each}
+			</div>
 		</div>
-	</div>
-	{#if selectedSign && imageUrl}
+	{/if}
+
+	{#if selectedSign && imageUrl && !showOverlay}
 		<div class="container" style="background-image: url('{imageUrl}');">
 			<div class="content">
 				<img src="./images/{selectedSign}.png" alt={selectedSign} height="100px" width="100px" />
@@ -127,11 +129,13 @@
 			<div id="attribution" on:click={() => (hideAttribution = !hideAttribution)}>
 				<InformationOutline />
 			</div>
-			<div id="attribution-box" class:hidden={hideAttribution}>
-				Attributions:
-				<p>Background images from <a href="https://www.pexels.com/" target="_blank">Pexels</a></p>
-				<a href="https://www.flaticon.com/packs/zodiac-9" title="zodiac icons" target="_blank">Zodiac icons created by Freepik - </a>
-			</div>
+			{#if !hideAttribution}
+				<div id="attribution-box" transition:fade={{ duration: 500 }}>
+					Attributions:
+					<p>Background images from <a href="https://www.pexels.com/" target="_blank">Pexels</a></p>
+					<a href="https://www.flaticon.com/packs/zodiac-9" title="zodiac icons" target="_blank">Zodiac icons created by Freepik - </a>
+				</div>
+			{/if}
 		</div>
 	{/if}
 </main>
