@@ -72,7 +72,9 @@
 					<div
 						class="sign {selectedSign === sign.name ? 'outline' : ''}"
 						on:click={() => {
-							selectedSign = sign.name;
+							if (selectedSign !== sign.name) selectedSign = sign.name;
+							if (day !== 'today') day = 'today';
+
 							showOverlay = false;
 						}}
 					>
