@@ -1,6 +1,6 @@
-import key from '../api.js';
 const baseUrl = 'https://api.pexels.com/v1';
-const apiKey = key();
+const apiKey = import.meta.env.VITE_API_KEY;
+console.log('key', apiKey);
 
 async function getImage(mood) {
 	//some moods wont return images, here do a rebind of it.
@@ -16,8 +16,6 @@ async function getImage(mood) {
 		imageUrls.landscape = './images/undefined.png';
 	}
 	const randomImageIndex = Math.floor(Math.random() * data.photos.length);
-	// console.log('i', randomImageIndex);
-	// console.log('photos', data.photos[randomImageIndex].src);
 	imageUrls.portrait = data.photos[randomImageIndex].src.portrait;
 	imageUrls.landscape = data.photos[randomImageIndex].src.landscape;
 
