@@ -23,4 +23,3 @@ src/lib/api.js
 *.njsproj
 *.sln
 *.sw?
-.env
